@@ -1,9 +1,17 @@
+var fileMale = 'census/male.txt';
+var fileFemale = 'census/female.txt';
+
+exports.loadSync = function() {
+  parseFile(fileMale);
+  parseFile(fileFemale);
+};
+
 exports.guess = function(fullName) {
   var firstName = getFirstNameFromFullName(fullName);
   firstName = firstName.toLowerCase(); 
 
-  var freqMale = frequencyInFile(firstName, 'census/male.txt');
-  var freqFemale = frequencyInFile(firstName, 'census/female.txt');
+  var freqMale = frequencyInFile(firstName, fileMale);
+  var freqFemale = frequencyInFile(firstName, fileFemale);
 
   var pMale = freqMale / (freqMale + freqFemale);
   var gender, confidence;
